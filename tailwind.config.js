@@ -39,7 +39,8 @@ module.exports = {
         590: "590px",
       },
       backgroundImage: {
-        "hero-pattern": "url('https://i.ibb.co/MkvLDfb/Rectangle-4389.png')",
+        "hero-pattern":
+          "url('https://static.vecteezy.com/system/resources/previews/005/868/050/original/business-startup-modern-flat-concept-for-web-banner-design-woman-entrepreneur-develops-new-idea-on-laptop-analyzes-and-creates-company-strategy-illustration-with-isolated-people-scene-vector.jpg')",
       },
       zIndex: {
         1000: "1000",

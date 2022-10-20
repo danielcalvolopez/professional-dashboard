@@ -8,10 +8,13 @@ import { StateContext } from "../context/ContextProvider";
 import { useContext } from "react";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu } = useContext(StateContext);
+  const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
+    useContext(StateContext);
 
-  const linkHandleCloseMenu = () => {
-    setActiveMenu(false);
+  const handleCloseSidebar = () => {
+    if (activeMenu && screenSize <= 900) {
+      setActiveMenu(false);
+    }
   };
 
   const buttonHandleActiveMenu = () => {
@@ -29,7 +32,7 @@ const Sidebar = () => {
         <>
           <div className="flex justify-between items-center">
             <Link
-              onClick={linkHandleCloseMenu}
+              onClick={handleCloseSidebar}
               to="/"
               className="items-center gap-3 ml-3 mt-4 flex text-xl font-extrabold tracking-tight dark:text-white text-slate-900"
             >
@@ -51,6 +54,7 @@ const Sidebar = () => {
                 <p className="text-gray-400 m-3 mt-4 uppercase">{title}</p>
                 {links.map(({ name, icon }) => (
                   <NavLink
+                    onClick={handleCloseSidebar}
                     key={name}
                     to={`/${name}`}
                     className={({ isActive }) =>

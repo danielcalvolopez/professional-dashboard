@@ -20,16 +20,35 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
       <span
         style={{ background: dotColor }}
         className="absolute inline-flex rounded-full h-2 w-2 right-2 top-2"
-      >
-        {icon}
-      </span>
+      />
+      {icon}
     </button>
   </TooltipComponent>
 );
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu, isCLicked, handleClick } =
-    useStateContext();
+  const {
+    activeMenu,
+    setActiveMenu,
+    isCLicked,
+    handleClick,
+    screenSize,
+    setScreenSize,
+  } = useStateContext();
+
+  useEffect(() => {
+    const handleResize = () => setScreenSize(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+
+    handleResize();
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, [setScreenSize]);
+
+  useEffect(() => {
+    screenSize <= 900 ? setActiveMenu(false) : setActiveMenu(true);
+  }, [screenSize, setActiveMenu]);
 
   const handleActiveMenu = () => {
     setActiveMenu(!activeMenu);
