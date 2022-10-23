@@ -8,7 +8,7 @@ import { StateContext } from "../context/ContextProvider";
 import { useContext } from "react";
 
 const Sidebar = () => {
-  const { activeMenu, setActiveMenu, screenSize, setScreenSize } =
+  const { activeMenu, setActiveMenu, screenSize, currentColor } =
     useContext(StateContext);
 
   const handleCloseSidebar = () => {
@@ -55,6 +55,9 @@ const Sidebar = () => {
                 {links.map(({ name, icon }) => (
                   <NavLink
                     onClick={handleCloseSidebar}
+                    style={({ isActive }) => ({
+                      backgroundColor: isActive ? currentColor : "",
+                    })}
                     key={name}
                     to={`/${name}`}
                     className={({ isActive }) =>
