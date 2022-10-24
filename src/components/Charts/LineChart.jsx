@@ -1,5 +1,4 @@
 import {
-  Category,
   ChartComponent,
   DataLabel,
   LineSeries,
@@ -32,13 +31,11 @@ const LineChart = () => {
       legendSettings={
         currentMode === "Light"
           ? { background: "white" }
-          : { background: "lightgray" }
+          : { background: "gray" }
       }
       background={currentMode === "Dark" ? "#33373E" : "#fff"}
     >
-      <Inject
-        services={[LineSeries, Legend, Tooltip, DataLabel, Category, DateTime]}
-      />
+      <Inject services={[LineSeries, Legend, Tooltip, DataLabel, DateTime]} />
       <SeriesCollectionDirective>
         {/* eslint-disable-next-line react/jsx-props-no-spreading */}
         {lineCustomSeries.map((item, index) => (
